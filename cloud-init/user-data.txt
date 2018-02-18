@@ -2,7 +2,7 @@
 
 package_upgrade: true
 
-packages: ['docker-ce', 'golang-go']
+packages: ['docker-ce', 'docker-compose', 'golang-go']
 
 apt:
   preserve_sources_list: true
@@ -18,7 +18,7 @@ apt:
 runcmd:
   - git clone https://github.com/edigonzales/hetzner-cloud-docker.git /root/hetzner-cloud-docker/
   - docker build -t sogis/nginx-reverseproxy:0.0.3 /root/hetzner-cloud-docker/reverseproxy/
-  - docker-compose up -d
+  - docker-compose -f hetzner-cloud-docker/docker-compose/docker-compose.yml up
 
 power_state:
   delay: "now"
